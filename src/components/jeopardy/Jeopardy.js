@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+
+import Display from "./Display";
 //import our service
-import JeopardyService from "../../jeopardyService";
+import JeopardyService from "../../jeopardyServices";
 class Jeopardy extends Component {
   //set our initial state and set up our service as this.client on this component
   constructor(props) {
@@ -14,10 +16,12 @@ class Jeopardy extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.capitalizeEachWord = this.capitalizeEachWord.bind(this);
   }
   //get a new random question from the API and add it to the data object in state
   getNewQuestion() {
     return this.client.getQuestion().then((result) => {
+      console.log(result);
       this.setState({
         data: result.data[0],
       });
@@ -39,31 +43,44 @@ class Jeopardy extends Component {
       newScore = this.state.score + this.state.data.value;
     else newScore = this.state.score - this.state.data.value;
 
-    this.setState({ score: newScore, answerText: "" });
+    setTimeout(() => {
+      this.setState({ score: newScore, answerText: "" });
+    }, 250);
+    
     this.getNewQuestion();
   }
 
   handleChange(e) {
+    console.log(e.target.value);
     this.setState({ answerText: e.target.value });
+  }
+
+  capitalizeEachWord(str) {
+    const array = str.split(" ");
+    return array
+      .map((word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(" ");
   }
 
   //display the results on the screen
   render() {
+    let category = this.state.data.category && this.state.data.category.title;
+    if (category) category = this.capitalizeEachWord(category);
     return (
-      <div>
-        <h4>Score: {this.state.score}</h4>
-        <h4>Question Value: {this.state.data.value}</h4>
-        <h3>{this.state.data.question}</h3>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleChange}
-            value={this.state.answerText}
-          ></input>
-          <button type="submit">Submit Answer</button>
-        </form>
-        {JSON.stringify(this.state.data)}
-      </div>
+      <Display
+        category={category}
+        score={this.state.score}
+        value={this.state.data.value}
+        question={this.state.data.question}
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+        answerText={this.state.answerText}
+        answer={this.state.data.answer}
+      />
     );
   }
 }
+
 export default Jeopardy;
