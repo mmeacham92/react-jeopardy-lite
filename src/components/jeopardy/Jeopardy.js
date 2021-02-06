@@ -28,7 +28,7 @@ class Jeopardy extends Component {
       console.log(result);
       console.log(result.data);
       this.setState({
-        data: result.data,
+        data: result.data[0],
       });
     });
   }
@@ -70,11 +70,11 @@ class Jeopardy extends Component {
 
   //display the results on the screen
   render() {
-    // let category = this.state.data?.category?.title;
-    // if (category) category = this.capitalizeEachWord(category);
+    let category = this.state.data?.category?.title;
+    if (category) category = this.capitalizeEachWord(category);
     return (
       <Display
-        // category={category}
+        category={category}
         score={this.state.score}
         value={this.state.data.value}
         question={this.state.data.question}

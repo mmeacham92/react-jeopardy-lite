@@ -11,19 +11,19 @@ class Display extends Component {
     return (
       <div className="jeopardy__container">
         <UserScore score={this.props.score} />
-        <Categories
+        {/* <Categories
           data={this.props.data}
           capitalizeEachWord={this.props.capitalizeEachWord}
           updateSelectedCategory={this.props.updateSelectedCategory}
-        />
-        <Question
+        /> */}
+        {/* <Question
           data={this.props.data}
           selectedCategory={this.props.selectedCategory}
           handleSubmit={this.props.handleSubmit}
           handleChange={this.props.handleChange}
-        />
+        /> */}
 
-        {/* <div className="question__div">
+        <div className="question__div">
           <h4 className="question__value">
             Question Value: {this.props.value}
           </h4>
@@ -44,7 +44,7 @@ class Display extends Component {
         </form>
         <h5>
           <em>Answer: {this.props.answer}</em>
-        </h5> */}
+        </h5>
 
       </div>
     );
