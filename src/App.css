@@ -49,13 +49,13 @@ body {
   width: 80%;
 }
 
-.score__div {
+/* .score__div {
   position: absolute;
-}
+} */
 
-.current__score {
+/* .current__score {
   transition: all ease 0.3s;
-}
+} */
 
 .category, .question {
   text-align: center;
