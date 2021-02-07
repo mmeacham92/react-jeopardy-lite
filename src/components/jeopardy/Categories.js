@@ -4,22 +4,21 @@ import CategoryButton from "./CategoryButton";
 
 class Categories extends React.Component {
   render() {
-    const questions = this.props.data.map((item) => {
-      return this.props.capitalizeEachWord(item?.category?.title);
-    });
-    const buttons = this.props.data.map((item) => {
+    const buttons = this.props.data.map((item, index) => {
       return (
         <CategoryButton
-          name={this.props.capitalizeEachWord(item?.category?.title)}
+          name={item?.category?.title}
           key={item.id}
-          updateSelectedCategory={this.props.updateSelectedCategory}
+          updateQuestionIndex={this.props.updateQuestionIndex}
+          capitalizeEachWord={this.props.capitalizeEachWord}
+          index={index}
         />
       );
     });
     return (
-      <div className="Categories">
+      <div className="categories__div">
         <h2>Select a Category</h2>
-        {buttons}
+        <div className="categories__buttons">{buttons}</div>
       </div>
     );
   }

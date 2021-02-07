@@ -2,14 +2,21 @@ import React from "react";
 
 class Question extends React.Component {
   render() {
-      const question = this.props.data.filter(item => item.category.title === this.props.selectedCategory.title)
+    const question = this.props.data.find(
+      (item, i) => i === this.props.currentQuestionIndex
+    );
+    console.log(question);
+
+    const category = this.props.capitalizeEachWord(
+      question?.category?.title || "waiting..."
+    );
     return (
       <div className="question__div">
-        <h4 className="question__value">Question Value: {question.value}</h4>
+        <h4 className="question__value">Question Value: {question?.value}</h4>
         <h3 className="category">
-          Category: <em>{this.props.category}</em>
+          Category: <em>{category}</em>
         </h3>
-        <h1 className="question">{this.props.question}</h1>
+        <h1 className="question">{question?.question}</h1>
 
         <form onSubmit={this.props.handleSubmit}>
           <input
@@ -20,10 +27,12 @@ class Question extends React.Component {
             Submit Answer
           </button>
         </form>
-        <h5><em>Answer: {this.props.answer}</em></h5>
+        <h5>
+          <em>Answer: {question?.answer}</em>
+        </h5>
       </div>
     );
   }
 }
 
-export default Question
+export default Question;

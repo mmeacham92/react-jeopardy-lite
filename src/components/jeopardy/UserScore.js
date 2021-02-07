@@ -7,7 +7,7 @@ class UserScore extends React.Component {
     return (
       <div className="score__div">
         <h4 className="current__score">
-          Score:{" "}
+          Your Score:{" "}
           <span style={this.props.score < 0 ? styleNegative : styleRegular}>
             {this.props.score}
           </span>

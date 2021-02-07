@@ -12,29 +12,32 @@ class Jeopardy extends Component {
       data: [],
       score: 0,
       answerText: "",
-      selectedCategory: "",
+      currentQuestionIndex: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.capitalizeEachWord = this.capitalizeEachWord.bind(this);
-    // this.updateSelectedCategory = this.updateSelectedCategory.bind(this);
+    this.updateQuestionIndex = this.updateQuestionIndex.bind(this);
   }
 
-  updateSelectedCategory = (category) => {this.setState({selectedCatgory: category})};
+  updateQuestionIndex = (index) => {
+    this.setState({ currentQuestionIndex: index });
+    console.log("index state updated!");
+  };
+
   //get a new random question from the API and add it to the data object in state
-  getNewQuestion() {
+  getNewQuestions() {
     return this.client.getQuestion().then((result) => {
-      console.log(result);
       console.log(result.data);
       this.setState({
-        data: result.data[0],
+        data: result.data,
       });
     });
   }
   //when the component mounts, get a the first question
   componentDidMount() {
-    this.getNewQuestion();
+    this.getNewQuestions();
   }
 
   checkAnswer(string, answer) {
@@ -44,13 +47,27 @@ class Jeopardy extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let newScore = 0;
-    if (this.checkAnswer(this.state.answerText, this.state.data.answer))
-      newScore = this.state.score + this.state.data.value;
-    else newScore = this.state.score - this.state.data.value;
+    if (
+      this.checkAnswer(
+        this.state.answerText,
+        this.state.data[this.state.currentQuestionIndex].answer
+      )
+    )
+      newScore =
+        this.state.score +
+        this.state.data[this.state.currentQuestionIndex].value;
+    else
+      newScore =
+        this.state.score -
+        this.state.data[this.state.currentQuestionIndex].value;
 
-    this.setState({ score: newScore, answerText: "" });
+    this.setState({
+      score: newScore,
+      answerText: "",
+      currentQuestionIndex: null,
+    });
 
-    this.getNewQuestion();
+    this.getNewQuestions();
   }
 
   handleChange(e) {
@@ -70,22 +87,18 @@ class Jeopardy extends Component {
 
   //display the results on the screen
   render() {
-    let category = this.state.data?.category?.title;
-    if (category) category = this.capitalizeEachWord(category);
     return (
       <Display
-        category={category}
         score={this.state.score}
         value={this.state.data.value}
-        question={this.state.data.question}
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         answerText={this.state.answerText}
         answer={this.state.data.answer}
         data={this.state.data}
         capitalizeEachWord={this.capitalizeEachWord}
-        selectedCategory={this.state.selectedCategory}
-        updateSelectedCategory={this.updateSelectedCategory}
+        currentQuestionIndex={this.state.currentQuestionIndex}
+        updateQuestionIndex={this.updateQuestionIndex}
       />
     );
   }

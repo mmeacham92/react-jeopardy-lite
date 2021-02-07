@@ -41,21 +41,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
   width: 80%;
 }
 
 .jeopardy__container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
   width: 80%;
 }
 
-/* .score__div {
-  position: absolute;
-} */
+.categories__div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
 
-/* .current__score {
-  transition: all ease 0.3s;
-} */
+.categories__buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.category__button {
+  flex-grow: 3;
+  padding: 0.5rem 0;
+}
+
 
 .category, .question {
   text-align: center;
