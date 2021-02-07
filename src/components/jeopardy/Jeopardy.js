@@ -9,41 +9,48 @@ class Jeopardy extends Component {
     super(props);
     this.client = new JeopardyService();
     this.state = {
+      // data is an array here as we will fetch 3 questions
       data: [],
       score: 0,
       answerText: "",
+      // this will be assigned once a user clicks a category button
       currentQuestionIndex: null,
     };
 
+    // bind our methods to this object
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.capitalizeEachWord = this.capitalizeEachWord.bind(this);
     this.updateQuestionIndex = this.updateQuestionIndex.bind(this);
   }
 
+  // updates the state once a category button is selected
   updateQuestionIndex = (index) => {
     this.setState({ currentQuestionIndex: index });
     console.log("index state updated!");
   };
 
-  //get a new random question from the API and add it to the data object in state
+  //gets 3 random questions from the API and add it to the data array in state
   getNewQuestions() {
-    return this.client.getQuestion().then((result) => {
+    return this.client.getQuestions().then((result) => {
       console.log(result.data);
       this.setState({
         data: result.data,
       });
     });
   }
-  //when the component mounts, get a the first question
+
+  //when the component mounts, get a the first 3 questions
   componentDidMount() {
     this.getNewQuestions();
   }
 
+  // compares the state value of answerText to the question object's answer value
   checkAnswer(string, answer) {
     return string.toLowerCase().trim() === answer.toLowerCase();
   }
 
+  // checkAnswer runs here, score values are settled, and state is reset to default values
   handleSubmit(e) {
     e.preventDefault();
     let newScore = 0;
@@ -70,12 +77,14 @@ class Jeopardy extends Component {
     this.getNewQuestions();
   }
 
+  // reassigns the state value of answerText whenever a user types in the input field
   handleChange(e) {
     console.log(e.target.value);
     console.log(this.state.selectedCategory);
     this.setState({ answerText: e.target.value });
   }
 
+  // formats a string so that the first letter of each word is capitalized -- will use this for categories
   capitalizeEachWord(str) {
     const array = str.split(" ");
     return array

@@ -2,8 +2,9 @@ import React from "react";
 
 class UserScore extends React.Component {
   render() {
+    // create two style objects, one for positive and another for negative scores
     const styleNegative = { color: "red" };
-    const styleRegular = {color: 'black'};
+    const styleRegular = { color: "black" };
     return (
       <div className="score__div">
         <h4 className="current__score">

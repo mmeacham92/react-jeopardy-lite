@@ -4,6 +4,7 @@ import CategoryButton from "./CategoryButton";
 
 class Categories extends React.Component {
   render() {
+    // returns a button with the name and text field === category.title for each of our objects in our state.data array
     const buttons = this.props.data.map((item, index) => {
       return (
         <CategoryButton

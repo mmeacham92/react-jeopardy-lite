@@ -2,11 +2,13 @@ import React from "react";
 
 class Question extends React.Component {
   render() {
+    // find the object in our state.data array that matches the currentQuestionIndex state property that is set by the user clicking a category button
     const question = this.props.data.find(
       (item, i) => i === this.props.currentQuestionIndex
     );
     console.log(question);
 
+    // capitalize the category.title property of our found question object. At first, there is no question, so we need a fallback value, i.e. 'waiting...'
     const category = this.props.capitalizeEachWord(
       question?.category?.title || "waiting..."
     );

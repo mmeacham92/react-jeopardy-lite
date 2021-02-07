@@ -4,6 +4,7 @@ import UserScore from "./UserScore";
 import Categories from "./Categories";
 import Question from "./Question";
 
+// our stateless display component :)
 class Display extends Component {
   render() {
     return (
