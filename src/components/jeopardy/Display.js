@@ -7,6 +7,7 @@ import Question from "./Question";
 // our stateless display component :)
 class Display extends Component {
   render() {
+    
     return (
       <div className="jeopardy__container">
         <UserScore score={this.props.score} />
@@ -15,6 +16,7 @@ class Display extends Component {
           capitalizeEachWord={this.props.capitalizeEachWord}
           updateQuestionIndex={this.props.updateQuestionIndex}
         />
+        
         <Question
           data={this.props.data}
           currentQuestionIndex={this.props.currentQuestionIndex}

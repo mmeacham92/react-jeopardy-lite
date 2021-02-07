@@ -12,6 +12,7 @@ class Question extends React.Component {
     const category = this.props.capitalizeEachWord(
       question?.category?.title || "waiting..."
     );
+
     return (
       <div className="question__div">
         <h4 className="question__value">Question Value: {question?.value}</h4>

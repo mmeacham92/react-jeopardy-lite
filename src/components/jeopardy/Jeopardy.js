@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Display from "./Display";
 //import our service
 import JeopardyService from "../../services/jeopardyServices";
+
 class Jeopardy extends Component {
   //set our initial state and set up our service as this.client on this component
   constructor(props) {
@@ -53,6 +54,7 @@ class Jeopardy extends Component {
   // checkAnswer runs here, score values are settled, and state is reset to default values
   handleSubmit(e) {
     e.preventDefault();
+    if (this.state.currentQuestionIndex === null) return;
     let newScore = 0;
     if (
       this.checkAnswer(
