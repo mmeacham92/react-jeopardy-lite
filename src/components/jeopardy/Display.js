@@ -15,6 +15,7 @@ class Display extends Component {
           data={this.props.data}
           capitalizeEachWord={this.props.capitalizeEachWord}
           updateQuestionIndex={this.props.updateQuestionIndex}
+          currentQuestionIndex={this.props.currentQuestionIndex}
         />
         
         <Question

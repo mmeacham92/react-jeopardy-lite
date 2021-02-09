@@ -20,7 +20,7 @@ class Question extends React.Component {
       <div className="question__div">
         <h4 className="question__value">Question Value: {question?.value}</h4>
         <h3 className="category">
-          Category: <em>{category}</em>
+          <em>{category}</em>
         </h3>
         <h1 className="question">{question?.question}</h1>
 
@@ -33,7 +33,7 @@ class Question extends React.Component {
             Submit Answer
           </button>
         </form>
-        
+
         <h5>
           <em>Answer: {question?.answer}</em>
         </h5>
