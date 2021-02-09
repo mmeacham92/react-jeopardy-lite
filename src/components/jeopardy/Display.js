@@ -7,7 +7,7 @@ import Question from "./Question";
 // our stateless display component :)
 class Display extends Component {
   render() {
-    
+
     return (
       <div className="jeopardy__container">
         <UserScore score={this.props.score} />

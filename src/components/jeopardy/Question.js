@@ -13,6 +13,9 @@ class Question extends React.Component {
       question?.category?.title || "waiting..."
     );
 
+    // render an empty div if a category hasn't been selected
+    if (this.props.currentQuestionIndex === null) return <div></div>;
+
     return (
       <div className="question__div">
         <h4 className="question__value">Question Value: {question?.value}</h4>
@@ -30,6 +33,7 @@ class Question extends React.Component {
             Submit Answer
           </button>
         </form>
+        
         <h5>
           <em>Answer: {question?.answer}</em>
         </h5>

@@ -31,14 +31,19 @@ class Jeopardy extends Component {
     console.log("index state updated!");
   };
 
-  //gets 3 random questions from the API and add it to the data array in state
+  // gets 3 random questions from the API and add it to the data array in state
   getNewQuestions() {
     return this.client.getQuestions().then((result) => {
       console.log(result.data);
       this.setState({
         data: result.data,
+        currentQuestionIndex: null
       });
     });
+  }
+
+  resetQuestions () {
+    this.getNewQuestions();
   }
 
   //when the component mounts, get a the first 3 questions
