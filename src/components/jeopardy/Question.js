@@ -6,7 +6,7 @@ class Question extends React.Component {
     const question = this.props.data.find(
       (item, i) => i === this.props.currentQuestionIndex
     );
-    console.log('current question: ');
+    console.log("current question: ");
     console.log(question);
 
     // capitalize the category.title property of our found question object. At first, there is no question, so we need a fallback value, i.e. 'waiting...'
@@ -18,26 +18,28 @@ class Question extends React.Component {
     if (this.props.currentQuestionIndex === null) return <div></div>;
 
     return (
-      <div className="question__div">
-        <h4 className="question__value">Question Value: {question?.value}</h4>
-        <h3 className="category">
-          <em>{category}</em>
-        </h3>
-        <h1 className="question">{question?.question}</h1>
+      <div className="question__background">
+        <div className="question__div">
+          <h4 className="question__value">Question Value: {question?.value}</h4>
+          <h2 className="category">
+            <em>{category}</em>
+          </h2>
+          <h1 className="question">{question?.question}</h1>
 
-        <form onSubmit={this.props.handleSubmit}>
-          <input
-            onChange={this.props.handleChange}
-            value={this.props.answerText}
-          ></input>
-          <button className="answer__button" type="submit">
-            Submit Answer
-          </button>
-        </form>
+          <form onSubmit={this.props.handleSubmit}>
+            <input
+              onChange={this.props.handleChange}
+              value={this.props.answerText}
+            ></input>
+            <button className="answer__button" type="submit">
+              Submit Answer
+            </button>
+          </form>
 
-        <h5>
-          <em>Answer: {question?.answer}</em>
-        </h5>
+          <h5>
+            <em>Answer: {question?.answer}</em>
+          </h5>
+        </div>
       </div>
     );
   }
