@@ -13,6 +13,7 @@ class Display extends Component {
           score={this.props.score}
           resetUserScore={this.props.resetUserScore}
           scoreStyle={this.props.scoreStyle}
+          currentQuestionIndex={this.props.currentQuestionIndex}
         />
         <Categories
           data={this.props.data}

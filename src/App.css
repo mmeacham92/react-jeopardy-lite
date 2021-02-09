@@ -81,8 +81,11 @@ body {
 }
 
 .category__button {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   padding: 0.5rem;
+  margin: 0 1%;
+  width: 30%;
+
 }
 
 
@@ -100,4 +103,8 @@ form {
 
 .answer__button {
   margin: .5rem 0;
+}
+
+.hide {
+  display: none;
 }

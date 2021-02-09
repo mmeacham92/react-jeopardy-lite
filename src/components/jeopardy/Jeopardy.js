@@ -37,10 +37,6 @@ class Jeopardy extends Component {
 
   // resets score state object to 0; will be called upon in UserScore component
   resetUserScore() {
-    if (this.state.currentQuestionIndex !== null) {
-      alert('cannot reset score during a question');
-      return;
-    }
     this.setState({ score: 0 });
     console.log('user score reset to 0!');
   }
