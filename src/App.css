@@ -51,6 +51,20 @@ body {
   width: 80%;
 }
 
+.user__score {
+  transition: all ease 0.3s;
+}
+
+@keyframes incorrect {
+  0% {color: red;}
+  100% {color: black;}
+}
+
+@keyframes correct {
+  0% {color: green;}
+  100% {color: black;}
+}
+
 .categories__div {
   display: flex;
   flex-direction: column;

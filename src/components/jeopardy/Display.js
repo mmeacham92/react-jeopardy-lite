@@ -10,12 +10,13 @@ class Display extends Component {
 
     return (
       <div className="jeopardy__container">
-        <UserScore score={this.props.score} />
+        <UserScore score={this.props.score} scoreStyle={this.props.scoreStyle} />
         <Categories
           data={this.props.data}
           capitalizeEachWord={this.props.capitalizeEachWord}
           updateQuestionIndex={this.props.updateQuestionIndex}
           currentQuestionIndex={this.props.currentQuestionIndex}
+          changeScoreColor={this.props.changeScoreColor}
         />
         
         <Question

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Display from "./Display";
 //import our service
 import JeopardyService from "../../services/jeopardyServices";
+import { waitForDomChange } from "@testing-library/react";
 
 class Jeopardy extends Component {
   //set our initial state and set up our service as this.client on this component
@@ -16,6 +17,7 @@ class Jeopardy extends Component {
       answerText: "",
       // this will be assigned once a user clicks a category button
       currentQuestionIndex: null,
+      scoreStyle: { color: "black" },
     };
 
     // bind our methods to this object
@@ -37,12 +39,12 @@ class Jeopardy extends Component {
       console.log(result.data);
       this.setState({
         data: result.data,
-        currentQuestionIndex: null
+        currentQuestionIndex: null,
       });
     });
   }
 
-  resetQuestions () {
+  resetQuestions() {
     this.getNewQuestions();
   }
 
@@ -61,27 +63,37 @@ class Jeopardy extends Component {
     e.preventDefault();
     if (this.state.currentQuestionIndex === null) return;
     let newScore = 0;
+    // we will assign an animation to the scoreStyle object depending on if the user answers correctly or incorrectly
+    let animation = "";
     if (
       this.checkAnswer(
         this.state.answerText,
         this.state.data[this.state.currentQuestionIndex].answer
       )
-    )
+    ) {
       newScore =
         this.state.score +
         this.state.data[this.state.currentQuestionIndex].value;
-    else
+      animation = "correct";
+    } else {
       newScore =
         this.state.score -
         this.state.data[this.state.currentQuestionIndex].value;
+      animation = "incorrect";
+    }
 
     this.setState({
       score: newScore,
       answerText: "",
       currentQuestionIndex: null,
+      scoreStyle: { animation: animation, animationDuration: "3s" },
     });
 
     this.getNewQuestions();
+    // reset the animation properties on the scoreStyle object
+    setTimeout(() => {
+      this.setState({ scoreStyle: { animation: "", animationDuration: "" } });
+    }, 1000);
   }
 
   // reassigns the state value of answerText whenever a user types in the input field
@@ -115,6 +127,8 @@ class Jeopardy extends Component {
         capitalizeEachWord={this.capitalizeEachWord}
         currentQuestionIndex={this.state.currentQuestionIndex}
         updateQuestionIndex={this.updateQuestionIndex}
+        scoreStyle={this.state.scoreStyle}
+        changeScoreColor={this.changeScoreColor}
       />
     );
   }
