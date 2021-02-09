@@ -18,6 +18,7 @@ class UserScore extends React.Component {
             {this.props.score}
           </span>
         </h4>
+        <button onClick={this.props.resetUserScore}>Reset Score</button>
       </div>
     );
   }

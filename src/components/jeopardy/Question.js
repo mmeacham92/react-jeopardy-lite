@@ -6,6 +6,7 @@ class Question extends React.Component {
     const question = this.props.data.find(
       (item, i) => i === this.props.currentQuestionIndex
     );
+    console.log('current question: ');
     console.log(question);
 
     // capitalize the category.title property of our found question object. At first, there is no question, so we need a fallback value, i.e. 'waiting...'

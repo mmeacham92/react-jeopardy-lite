@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Display from "./Display";
 //import our service
 import JeopardyService from "../../services/jeopardyServices";
-import { waitForDomChange } from "@testing-library/react";
+
 
 class Jeopardy extends Component {
   //set our initial state and set up our service as this.client on this component
@@ -17,6 +17,7 @@ class Jeopardy extends Component {
       answerText: "",
       // this will be assigned once a user clicks a category button
       currentQuestionIndex: null,
+      // this style object will be assigned to the UserScore component
       scoreStyle: { color: "black" },
     };
 
@@ -25,6 +26,7 @@ class Jeopardy extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.capitalizeEachWord = this.capitalizeEachWord.bind(this);
     this.updateQuestionIndex = this.updateQuestionIndex.bind(this);
+    this.resetUserScore = this.resetUserScore.bind(this);
   }
 
   // updates the state once a category button is selected
@@ -33,19 +35,26 @@ class Jeopardy extends Component {
     console.log("index state updated!");
   };
 
+  // resets score state object to 0; will be called upon in UserScore component
+  resetUserScore() {
+    if (this.state.currentQuestionIndex !== null) {
+      alert('cannot reset score during a question');
+      return;
+    }
+    this.setState({ score: 0 });
+    console.log('user score reset to 0!');
+  }
+
   // gets 3 random questions from the API and add it to the data array in state
   getNewQuestions() {
     return this.client.getQuestions().then((result) => {
+      console.log('current question set: ')
       console.log(result.data);
       this.setState({
         data: result.data,
         currentQuestionIndex: null,
       });
     });
-  }
-
-  resetQuestions() {
-    this.getNewQuestions();
   }
 
   //when the component mounts, get a the first 3 questions
@@ -75,11 +84,13 @@ class Jeopardy extends Component {
         this.state.score +
         this.state.data[this.state.currentQuestionIndex].value;
       animation = "correct";
+      console.log('correct answer!')
     } else {
       newScore =
         this.state.score -
         this.state.data[this.state.currentQuestionIndex].value;
       animation = "incorrect";
+      console.log('incorrect answer!');
     }
 
     this.setState({
@@ -90,6 +101,7 @@ class Jeopardy extends Component {
     });
 
     this.getNewQuestions();
+    console.log('retrieving new questions');
     // reset the animation properties on the scoreStyle object
     setTimeout(() => {
       this.setState({ scoreStyle: { animation: "", animationDuration: "" } });
@@ -98,8 +110,6 @@ class Jeopardy extends Component {
 
   // reassigns the state value of answerText whenever a user types in the input field
   handleChange(e) {
-    console.log(e.target.value);
-    console.log(this.state.selectedCategory);
     this.setState({ answerText: e.target.value });
   }
 
@@ -118,6 +128,7 @@ class Jeopardy extends Component {
     return (
       <Display
         score={this.state.score}
+        resetUserScore={this.resetUserScore}
         value={this.state.data.value}
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
@@ -128,7 +139,6 @@ class Jeopardy extends Component {
         currentQuestionIndex={this.state.currentQuestionIndex}
         updateQuestionIndex={this.updateQuestionIndex}
         scoreStyle={this.state.scoreStyle}
-        changeScoreColor={this.changeScoreColor}
       />
     );
   }

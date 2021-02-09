@@ -53,6 +53,7 @@ body {
 
 .user__score {
   transition: all ease 0.3s;
+  font-size: 1.3rem;
 }
 
 @keyframes incorrect {
@@ -75,13 +76,13 @@ body {
 
 .categories__buttons {
   display: flex;
-  justify-content: space-around;
-  width: 50%;
+  justify-content: center;
+  width: 100%;
 }
 
 .category__button {
-  flex-grow: 3;
-  padding: 0.5rem 0;
+  flex-grow: 1;
+  padding: 0.5rem;
 }
 
 
