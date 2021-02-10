@@ -18,7 +18,7 @@ class Jeopardy extends Component {
       // this will be assigned once a user clicks a category button
       currentQuestionIndex: null,
       // this style object will be assigned to the UserScore component
-      scoreStyle: { color: "black" },
+      scoreStyle: { color: "white" },
     };
 
     // bind our methods to this object

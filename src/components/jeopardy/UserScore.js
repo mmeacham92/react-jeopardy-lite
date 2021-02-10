@@ -8,7 +8,7 @@ class UserScore extends React.Component {
 
     return (
       <div className="score__div">
-        <h4 className="current__score">
+        <h3 className="current__score">
           Your Score:{" "}
           <span
             // style={this.props.score >= 0 ? styleRegular : styleNegative}
@@ -17,10 +17,10 @@ class UserScore extends React.Component {
           >
             {this.props.score}
           </span>
-        </h4>
+        </h3>
         <button
           onClick={this.props.resetUserScore}
-          className={this.props.currentQuestionIndex === null ? "" : "hide"}
+          className={`reset__button ${this.props.currentQuestionIndex === null ? "" : "hide"}`}
         >
           Reset Score
         </button>

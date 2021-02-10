@@ -4,8 +4,9 @@ import CategoryButton from "./CategoryButton";
 
 class Categories extends React.Component {
   render() {
-    // returns a button with the name and text field === category.title for each of our objects in our state.data array
+    // renders an empty div if a category has been selected
     if (this.props.currentQuestionIndex !== null) return <div></div>;
+    // returns a button with the name and text field === category.title for each of our objects in our state.data array
     const buttons = this.props.data.map((item, index) => {
       return (
         <CategoryButton

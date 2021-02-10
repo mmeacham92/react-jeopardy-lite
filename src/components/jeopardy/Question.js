@@ -1,6 +1,18 @@
 import React from "react";
 
 class Question extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            clicked: false
+        }
+        
+        this.changeInputStyle = this.changeInputStyle.bind(this);
+    }
+
+    changeInputStyle (value) {
+        this.setState({clicked: value})
+    }
   render() {
     // find the object in our state.data array that matches the currentQuestionIndex state property that is set by the user clicking a category button
     const question = this.props.data.find(
@@ -8,6 +20,8 @@ class Question extends React.Component {
     );
     console.log("current question: ");
     console.log(question);
+
+    let inputClass = this.state.clicked ? 'user__answer-clicked' : 'user__answer-not-clicked';
 
     // capitalize the category.title property of our found question object. At first, there is no question, so we need a fallback value, i.e. 'waiting...'
     const category = this.props.capitalizeEachWord(
@@ -30,8 +44,12 @@ class Question extends React.Component {
             <input
               onChange={this.props.handleChange}
               value={this.props.answerText}
+              className={`user__answer ${inputClass}`}
+              onClick={() => this.changeInputStyle(true)}
             ></input>
-            <button className="answer__button" type="submit">
+            <button className="answer__button" type="submit" onClick={() => {
+                this.changeInputStyle(false);
+            }}>
               Submit Answer
             </button>
           </form>
