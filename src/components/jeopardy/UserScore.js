@@ -8,19 +8,26 @@ class UserScore extends React.Component {
 
     return (
       <div className="score__div">
-        <h3 className="current__score">
-          Your Score:{" "}
-          <span
-            // style={this.props.score >= 0 ? styleRegular : styleNegative}
-            style={this.props.scoreStyle}
-            className="user__score"
-          >
-            {this.props.score}
-          </span>
-        </h3>
+        <div className="score">
+          <h3>
+            <span className="current__score">
+              Your Score:{" "}
+              <span
+                // style={this.props.score >= 0 ? styleRegular : styleNegative}
+                style={this.props.scoreStyle}
+                className="user__score"
+              >
+                {this.props.score}
+              </span>
+            </span>
+          </h3>
+        </div>
+
         <button
           onClick={this.props.resetUserScore}
-          className={`reset__button ${this.props.currentQuestionIndex === null ? "" : "hide"}`}
+          className={`reset__button ${
+            this.props.currentQuestionIndex === null ? "" : "hide"
+          }`}
         >
           Reset Score
         </button>
