@@ -12,7 +12,7 @@ class CategoryButton extends React.Component {
         onClick={updateQuestion}
         name={this.props.name}
       >
-        {this.props.capitalizeEachWord(this.props.name) }
+        {this.props.capitalizeEachWord(this.props.name)}
       </button>
     );
   }

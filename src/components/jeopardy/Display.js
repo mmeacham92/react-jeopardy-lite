@@ -8,13 +8,11 @@ import GameStart from "./GameStart";
 // our stateless display component :)
 class Display extends Component {
   render() {
+    // returns the GameStart component when Display is first mounted
     if (this.props.isPlaying === false) {
-      return (
-        <GameStart
-          updateIsPlaying={this.props.updateIsPlaying}
-        />
-      );
+      return <GameStart updateIsPlaying={this.props.updateIsPlaying} />;
     }
+    // returns the main game container once the user clicks 'Play'
     return (
       <div className="jeopardy__container">
         <UserScore

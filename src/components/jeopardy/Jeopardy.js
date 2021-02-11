@@ -34,16 +34,20 @@ class Jeopardy extends Component {
   updateQuestionIndex(index) {
     this.setState({ currentQuestionIndex: index });
     console.log("index state updated!");
-  };
+  }
 
+  // upaates isPlaying state object; get triggered when GameStart button element is clicked
   updateIsPlaying(e) {
     this.setState({ isPlaying: true });
     console.log(e.target);
-  };
+  }
 
   // resets score state object to 0; will be called upon in UserScore component
   resetUserScore() {
-    this.setState({ score: 0 });
+    this.setState({
+      score: 0,
+      scoreStyle: { animation: "reset", animationDuration: "3s" },
+    });
     console.log("user score reset to 0!");
   }
 

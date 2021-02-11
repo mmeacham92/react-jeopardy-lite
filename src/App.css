@@ -9,7 +9,6 @@ body {
   color: white;
   background-color: #2a2a72;
   background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
-  /* background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); */
 }
 
 .Navigation {
@@ -88,7 +87,6 @@ body {
 .jeopardy__container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   width: 80%;
 }
 
@@ -106,17 +104,12 @@ button {
   margin-bottom: 1rem;
 }
 
-/* .score h3 {
-  display: inline;
-} */
-
 .current__score {
   border-bottom: 1px solid white;
   padding-bottom: 1rem;
 }
 
 .user__score {
-  /* transition: all ease 0.3s; */
   font-size: 3.3rem;
   position: relative;
   top: 0.6rem;
@@ -157,7 +150,6 @@ button {
 }
 
 .category__button {
-  /* flex-grow: 1; */
   flex-wrap: wrap;
   padding: 1rem;
   margin: 1%;
@@ -185,6 +177,7 @@ button {
 
 .question__div {
   padding: 0 2rem;
+  width: 100%;
 }
 
 .question__background {
@@ -269,6 +262,15 @@ form {
 @keyframes correct {
   0% {
     color: green;
+  }
+  100% {
+    color: rgb(219, 219, 98);
+  }
+}
+
+@keyframes reset {
+  0% {
+    color: black;
   }
   100% {
     color: rgb(219, 219, 98);

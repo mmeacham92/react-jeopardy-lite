@@ -30,12 +30,9 @@ class Question extends React.Component {
             <input
               onChange={this.props.handleChange}
               value={this.props.answerText}
-              className='user__answer'
+              className="user__answer"
             ></input>
-            <button
-              className="answer__button"
-              type="submit"
-            >
+            <button className="answer__button" type="submit">
               Submit Answer
             </button>
           </form>
