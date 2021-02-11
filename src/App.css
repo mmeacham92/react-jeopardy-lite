@@ -49,7 +49,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 60vh;
   justify-content: center;
 }
 
@@ -58,16 +58,21 @@ body {
   animation: fadeIn 3s;
 }
 
-.game__start button:hover {
-  transform: scale(1.5);
-}
-
 .jeopardy__banner {
   font-size: 5rem;
 }
 
 .game__start button {
-  margin-top: 3rem;
+  margin-top: 5rem;
+  padding: 1rem 5rem;
+  font-size: 2rem;
+  transition: all ease 0.3s;
+}
+
+.game__start button:hover {
+  transform: scale(1.5);
+  background: #4343b5;
+  color: white;
 }
 
 @keyframes fadeIn {
@@ -148,13 +153,14 @@ button {
   display: flex;
   justify-content: center;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .category__button {
   /* flex-grow: 1; */
   flex-wrap: wrap;
   padding: 1rem;
-  margin: 0 1%;
+  margin: 1%;
   width: 30%;
   color: white;
   background-color: #4343b5;
@@ -178,12 +184,15 @@ button {
 }
 
 .question__div {
-  margin-top: 5rem;
+  padding: 0 2rem;
 }
 
 .question__background {
-  /* background: rgba(194, 63, 63, 0.164); */
-  padding: 0 2rem;
+  background: rgba(194, 63, 63, 0.164);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
 }
 
 form {
@@ -196,13 +205,14 @@ form {
 .user__answer {
   margin: 2rem 0;
   font-size: 1rem;
-  opacity: .5;
+  opacity: 0.5;
+  text-align: center;
 }
 
 .user__answer:focus {
   outline: none;
   opacity: 1;
-  transform: scale(1.3) scaleY(1.4);
+  transform: scale(2);
   transition: all ease 0.3s;
 }
 
@@ -210,7 +220,7 @@ form {
   margin: 0.5rem 0;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  transition: all ease .1s;
+  transition: all ease 0.1s;
 }
 
 .answer__button:hover {
@@ -240,7 +250,6 @@ form {
   .category__button {
     width: 100%;
     margin-bottom: 1rem;
-    
   }
 
   .question__div {
@@ -253,7 +262,7 @@ form {
     color: red;
   }
   100% {
-    color: rgb(219, 219, 98);;
+    color: rgb(219, 219, 98);
   }
 }
 
@@ -262,6 +271,6 @@ form {
     color: green;
   }
   100% {
-    color: rgb(219, 219, 98);;
+    color: rgb(219, 219, 98);
   }
 }

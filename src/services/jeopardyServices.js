@@ -2,7 +2,7 @@ import axios from "axios";
 class JeopardyService {
   // grab 3 random questions from API
   constructor(
-    url = "http://jservice.io/api/random?count=3",
+    url = "http://jservice.io/api/random?count=6",
     client = axios.create()
   ) {
     this.url = url;

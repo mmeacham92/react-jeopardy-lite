@@ -7,7 +7,7 @@ class GameStart extends React.Component {
         <h1 className>Welcome To</h1>
         <h1 className='jeopardy__banner'>Jeopardy!</h1>
         <button onClick={this.props.updateIsPlaying} type='button' className='play__now-button'>
-          Play Now!
+          Play
         </button>
       </div>
     );
