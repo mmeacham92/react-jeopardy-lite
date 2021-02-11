@@ -45,6 +45,41 @@ body {
   width: 80%;
 }
 
+.game__start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.game__start h1 {
+  margin: 0;
+  animation: fadeIn 3s;
+}
+
+.game__start button:hover {
+  transform: scale(1.5);
+}
+
+.jeopardy__banner {
+  font-size: 5rem;
+}
+
+.game__start button {
+  margin-top: 3rem;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .jeopardy__container {
   display: flex;
   flex-direction: column;

@@ -3,10 +3,18 @@ import React, { Component } from "react";
 import UserScore from "./UserScore";
 import Categories from "./Categories";
 import Question from "./Question";
+import GameStart from "./GameStart";
 
 // our stateless display component :)
 class Display extends Component {
   render() {
+    if (this.props.isPlaying === false) {
+      return (
+        <GameStart
+          updateIsPlaying={this.props.updateIsPlaying}
+        />
+      );
+    }
     return (
       <div className="jeopardy__container">
         <UserScore
