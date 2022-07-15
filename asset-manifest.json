@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-jeopardy-lite/static/css/main.6040655e.chunk.css",
+    "main.js": "/react-jeopardy-lite/static/js/main.8b3a4681.chunk.js",
+    "main.js.map": "/react-jeopardy-lite/static/js/main.8b3a4681.chunk.js.map",
+    "runtime-main.js": "/react-jeopardy-lite/static/js/runtime-main.59c2caee.js",
+    "runtime-main.js.map": "/react-jeopardy-lite/static/js/runtime-main.59c2caee.js.map",
+    "static/js/2.7184fc34.chunk.js": "/react-jeopardy-lite/static/js/2.7184fc34.chunk.js",
+    "static/js/2.7184fc34.chunk.js.map": "/react-jeopardy-lite/static/js/2.7184fc34.chunk.js.map",
+    "index.html": "/react-jeopardy-lite/index.html",
+    "static/css/main.6040655e.chunk.css.map": "/react-jeopardy-lite/static/css/main.6040655e.chunk.css.map",
+    "static/js/2.7184fc34.chunk.js.LICENSE.txt": "/react-jeopardy-lite/static/js/2.7184fc34.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.59c2caee.js",
+    "static/js/2.7184fc34.chunk.js",
+    "static/css/main.6040655e.chunk.css",
+    "static/js/main.8b3a4681.chunk.js"
+  ]
+}
