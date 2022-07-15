@@ -53,11 +53,12 @@ class Jeopardy extends Component {
 
   // gets 3 random questions from the API and add it to the data array in state
   getNewQuestions() {
-    return this.client.getQuestions().then((result) => {
+    // fetch()
+    this.client.getQuestions().then((result) => {
       console.log("current question set: ");
       console.log(result.data);
       this.setState({
-        data: result.data,
+        data: result.data.clues.slice(0, 6),
         currentQuestionIndex: null,
       });
     });
